@@ -1,0 +1,11 @@
+cmake_minimum_required(VERSION 3.29)
+project(input_filter)
+
+set(CMAKE_CXX_STANDARD 20)
+
+include(CTest)
+
+add_executable(input_filter main.cpp
+        Test/test.cpp)
+add_subdirectory(external)
+add_subdirectory(Test)
