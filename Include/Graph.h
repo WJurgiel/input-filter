@@ -18,7 +18,7 @@ private:
 public:
     explicit Graph(bool isReversed=false);
     void addNode(const Node& node);
-    [[nodiscard]] std::map<Node, std::vector<Node>> getAdjList() const;
+    [[nodiscard]] const std::map<Node, std::vector<Node>>& getAdjList() const;
     friend std::ostream& operator<<(std::ostream& os, const Graph& graph);
 };
 

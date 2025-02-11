@@ -30,7 +30,7 @@ void Graph::addNode(const Node &node) {
     }
 }
 
-std::map<Node, std::vector<Node>> Graph::getAdjList() const {
+const std::map<Node, std::vector<Node>>& Graph::getAdjList() const {
     return adjList;
 }
 
