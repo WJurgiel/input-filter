@@ -1,5 +1,6 @@
 if(BUILD_TESTING)
-    add_executable(my_test test.cpp)
+    add_executable(my_test test.cpp ../Source/Graph.cpp ../Source/Node.cpp)
+
     target_link_libraries(my_test PRIVATE GTest::gtest_main)
 
     include(GoogleTest)

@@ -7,6 +7,8 @@ add_subdirectory(Source)
 include(CTest)
 
 add_executable(input_filter main.cpp
+        Source/Graph.cpp
+        Source/Node.cpp
         )
 add_subdirectory(external)
 add_subdirectory(Test)
