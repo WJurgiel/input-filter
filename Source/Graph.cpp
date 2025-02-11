@@ -18,13 +18,15 @@ void Graph::addNode(const Node &node) {
         if(it->first.getId() == node.getId()) continue;
         if(node.getValue() < it->first.getValue()) {
             (isReversed) ? addEdge(node, it->first) : addEdge(it->first, node);
-        }else if (node.getValue() == it->first.getValue()) {
+        }
+        else if (node.getValue() > it->first.getValue()) {
+            (isReversed) ? addEdge(it->first, node) : addEdge(node, it->first);
+        }
+        else {
             addEdge(node, it->first);
             addEdge(it->first, node);
         }
-        else {
-            (isReversed) ? addEdge(it->first, node) : addEdge(node, it->first);
-        }
+
     }
 }
 
