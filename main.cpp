@@ -28,6 +28,7 @@ int main() {
     std::cout << jGraph << '\n';
 
     GraphComparator comparator(cGraph,pGraph,jGraph);
-    comparator.executeFilter();
+    int entriesLeft = comparator.executeFilter();
+    std::cout << "Remaining: " << entriesLeft << '\n';
     return 0;
 }

@@ -14,15 +14,15 @@ IntMap GraphComparator::createIntMap(const Graph& targetGraph) {
     return map;
 }
 
-int GraphComparator::check() const {
+std::vector<int> GraphComparator::check() const {
     const IntMap cIds = createIntMap(cGraph); 
     const IntMap pIds = createIntMap(pGraph);
     const IntMap jIds = createIntMap(jGraph);
     std::vector<int> commonKeys;
-
     for(const auto& [key, vecC] : cIds) {
         auto itP = pIds.find(key);
         auto itJ = jIds.find(key);
+
         if(itP != pIds.end() && itJ != jIds.end()) {
             const std::vector<int>& vecP = itP->second;
             const std::vector<int>& vecJ = itJ->second;
@@ -46,13 +46,17 @@ int GraphComparator::check() const {
         std::cout << x << " ";
     }
     std::cout<<"\n";
-    return cGraph.getAdjList().size() - commonKeys.size();
+    return commonKeys;
 }
 
 GraphComparator::GraphComparator(Graph &cGraph, Graph &pGraph, Graph &jGraph)
 : cGraph(cGraph), pGraph(pGraph), jGraph(jGraph) {}
 
-void GraphComparator::executeFilter() const {
-    const int remaining = check();
-    std::cout << "remaining: " << remaining << "\n";
+int GraphComparator::executeFilter() {
+    this->commonKeys = check();
+    return cGraph.getAdjList().size() - commonKeys.size();
+}
+
+std::vector<int> GraphComparator::getCommonKeys() const {
+    return commonKeys;
 }

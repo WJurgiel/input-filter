@@ -13,14 +13,15 @@ private:
     Graph& cGraph;
     Graph& pGraph;
     Graph& jGraph;
-    std::vector<int> toThrowAway;
+    std::vector<int> commonKeys;
 
     static IntMap createIntMap(const Graph& targetGraph);
 
-    int check() const;
+    std::vector<int> check() const;
 public:
     GraphComparator(Graph& cGraph, Graph& pGraph, Graph& jGraph);
-    void executeFilter() const;
+    [[nodiscard]] int executeFilter();
+    [[nodiscard]] std::vector<int> getCommonKeys() const;
 };
 
 
