@@ -2,6 +2,8 @@
 #include <iostream>
 #include <Node.h>
 
+#include "GraphComparator.h"
+
 int main() {
     const Node cEdges[] = {
         {0,300}, {1,20}, {2,4}, { 3,200}, {4, 200}};
@@ -24,5 +26,9 @@ int main() {
 
     std::cout << "J:\n";
     std::cout << jGraph << '\n';
+
+    GraphComparator comparator(cGraph,pGraph,jGraph);
+    int entriesLeft = comparator.executeFilter();
+    std::cout << "Remaining: " << entriesLeft << '\n';
     return 0;
 }
