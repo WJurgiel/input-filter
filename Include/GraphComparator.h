@@ -17,7 +17,7 @@ private:
 
     static IntMap createIntMap(const Graph& targetGraph);
 
-    void check() const;
+    int check() const;
 public:
     GraphComparator(Graph& cGraph, Graph& pGraph, Graph& jGraph);
     void executeFilter() const;

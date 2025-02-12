@@ -14,8 +14,8 @@ IntMap GraphComparator::createIntMap(const Graph& targetGraph) {
     return map;
 }
 
-void GraphComparator::check() const {
-    const IntMap cIds = createIntMap(cGraph);
+int GraphComparator::check() const {
+    const IntMap cIds = createIntMap(cGraph); 
     const IntMap pIds = createIntMap(pGraph);
     const IntMap jIds = createIntMap(jGraph);
     std::vector<int> commonKeys;
@@ -46,11 +46,13 @@ void GraphComparator::check() const {
         std::cout << x << " ";
     }
     std::cout<<"\n";
+    return cGraph.getAdjList().size() - commonKeys.size();
 }
 
 GraphComparator::GraphComparator(Graph &cGraph, Graph &pGraph, Graph &jGraph)
 : cGraph(cGraph), pGraph(pGraph), jGraph(jGraph) {}
 
 void GraphComparator::executeFilter() const {
-    check();
+    const int remaining = check();
+    std::cout << "remaining: " << remaining << "\n";
 }
